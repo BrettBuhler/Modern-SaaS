@@ -1,0 +1,4 @@
+{
+    "pgFormatter.functionCase": "lowercase",
+    "pgFormatter.keywordCase": "lowercase"
+}
