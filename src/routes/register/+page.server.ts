@@ -22,7 +22,7 @@ export const actions: Actions = {
         console.log(form)
 
         if (!form.valid) {
-            return fail(400,{})
+            return fail(400,{ form })
         }
 
         if (form.data.password !== form.data.passwordConfirm) {
