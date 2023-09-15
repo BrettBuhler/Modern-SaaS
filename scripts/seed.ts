@@ -1,16 +1,18 @@
-import { clearSupabase, startSupabase, createUser } from "./utils";
+import { clearSupabaseData, createUser, startSupabase, createContact } from "./utils";
 
 async function seed() {
-    try {
-        await startSupabase()
-        await clearSupabase()
-        await createUser({ email: "t@t.com", full_name: "Test user", password: "password123"})
+  try {
+    await startSupabase();
+    await clearSupabaseData();
+    const user = await createUser({ email: "t@t.com", full_name: "Test user", password: "password" });
 
-    } catch (error) {
-        console.error(error)
-        process.exit(1)
+    for (let i = 0; i < 5; i++) {
+        await createContact(user.id)
     }
-    process.exit()
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
+  }
+  process.exit();
 }
-
-seed()
+seed();
